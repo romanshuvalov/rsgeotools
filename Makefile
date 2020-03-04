@@ -10,7 +10,8 @@ CXX = g++
 LD = g++
 
 INC = 
-CFLAGS = -Wall -fexceptions -g
+CFLAGS = -g
+#CFLAGS = -Wall -fexceptions -g
 OUTPUT_BIN_DIR = bin
 SRC_DIR = src
 
@@ -22,10 +23,13 @@ clean:
 before_rsgeotools: 
 	test -d bin || mkdir -p bin
 
-rsgeotools: before_rsgeotools rsgeotools-conv
+rsgeotools: before_rsgeotools rsgeotools-conv rsgeotools-csv2rvtdata
 
 rsgeotools-conv: before_rsgeotools  
-	$(CXX) $(CFLAGS) $(INC) $(SRC_DIR)/rsgeotools-conv.cpp -o $(OUTPUT_BIN_DIR)/rsgeotools-conv
+	$(CXX) $(CFLAGS) $(INC) $(SRC_DIR)/conv/conv.cpp -o $(OUTPUT_BIN_DIR)/rsgeotools-conv
+
+rsgeotools-csv2rvtdata: before_rsgeotools  
+	$(CXX) $(CFLAGS) $(INC) -I$(SRC_DIR)/csv2rvtdata/ -lgeos_c $(SRC_DIR)/csv2rvtdata/csv.c $(SRC_DIR)/csv2rvtdata/csv2rvtdata.cpp -o $(OUTPUT_BIN_DIR)/rsgeotools-csv2rvtdata
 
 .PHONY: before_rsgeotools clean_rsgeotools
 
