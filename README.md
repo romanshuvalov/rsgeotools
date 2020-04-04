@@ -7,4 +7,5 @@ This repository is currently under development. Please come back later.
 
 * libgeos_c, LGPL-licensed, for rsgeotools-csv2rvtdata
 * gdal, MIT/X style license, for processing heightmaps with rsgeotools-csv2rvtdata 
-
+* libtiff-dev and geotiff-bin, for processing TIFF images
+* osmctools (osmconvert and osmfilter) for initial processing OSM planet
