@@ -142,7 +142,7 @@ int main(int argc, char ** argv) {
         fprintf( stderr, "  i - print all tiles for scale <dest_z> located inside given tile \n");
         fprintf( stderr, "  I - same, but exclude lower 1/4 of world map (Antarctica) \n");
         fprintf( stderr, "  o - print tile for scale <dest_z> contains given tile \n");
-        fprintf( stderr, "  h - create heightmap using GDAL utils (gdalwarp) and HGT data\n");
+        fprintf( stderr, "  h - create heightmap using GDAL utils (gdalwarp) and ASTER GDEM v3 data\n");
         fprintf( stderr, "  t - print list of NxN tiles around point defined by lat/lon " );
         fprintf( stderr, "\n");
         return -1;
@@ -330,7 +330,7 @@ int main(int argc, char ** argv) {
                 // 0.001 forces round to right side
                 deg2ci( 0.001 + (double) j, 0.001 + (double) i, &a_ilon, &a_ilat, &a_clon, &a_clat);
 
-                printf("%c%02d%c%03d.hgt\n", a_clat, a_ilat, a_clon, a_ilon );
+                printf("%c%02d%c%03d\n", a_clat, a_ilat, a_clon, a_ilon );
 
             }
         }
@@ -358,8 +358,8 @@ int main(int argc, char ** argv) {
         // Heightmap
         // fprintf(stderr, "Processing tile: [%d, %d] of zoom %d \n", tile_x, tile_y, z_scale);
 
-        if (argc != 6) {
-            fprintf( stderr, "Usage: geoconv h z_scale tile_x tile_y image_size\n");
+        if (argc != 8) {
+            fprintf( stderr, "Usage: geoconv h z_scale tile_x tile_y image_size hgt_prefix hgt_suffix\n");
             exit(-1);
         };
 
@@ -371,13 +371,16 @@ int main(int argc, char ** argv) {
             exit(-1);
         };
 
+        char *hgt_prefix = argv[6];
+        char *hgt_suffix = argv[7];
+
 
         char hgt_filenames[4][200];
 
-        sprintf(hgt_filenames[0], "%c%02d%c%03d.hgt", clat1, ilat1, clon1, ilon1 );
-        sprintf(hgt_filenames[1], "%c%02d%c%03d.hgt", clat1, ilat1, clon2, ilon2 );
-        sprintf(hgt_filenames[2], "%c%02d%c%03d.hgt", clat2, ilat2, clon1, ilon1 );
-        sprintf(hgt_filenames[3], "%c%02d%c%03d.hgt", clat2, ilat2, clon2, ilon2 );
+        sprintf(hgt_filenames[0], "%s%c%02d%c%03d%s", hgt_prefix, clat1, ilat1, clon1, ilon1, hgt_suffix );
+        sprintf(hgt_filenames[1], "%s%c%02d%c%03d%s", hgt_prefix, clat1, ilat1, clon2, ilon2, hgt_suffix );
+        sprintf(hgt_filenames[2], "%s%c%02d%c%03d%s", hgt_prefix, clat2, ilat2, clon1, ilon1, hgt_suffix );
+        sprintf(hgt_filenames[3], "%s%c%02d%c%03d%s", hgt_prefix, clat2, ilat2, clon2, ilon2, hgt_suffix );
 
         int f_present[4];
 
