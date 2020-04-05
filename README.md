@@ -27,6 +27,8 @@ In OpenStreetMap, large water areas are not stored as polygons, instead, `natura
 2. Rename `shapefiles.<ext>` to `ocean0_0_0.<ext>`.
 3. Split shapefiles up to zoom level 7:
 ```sh
+cd $RVT_SHP_DIR
+
 rsgeotools-subdiv-shapefile.sh 0 0 0 1 ocean
 
 rsgeotools-subdiv-shapefile.sh 0 0 0 2 ocean
@@ -48,11 +50,12 @@ rsgeotools-subdiv-shapefile.sh 0 0 0 7 ocean
 rm ocean6*
 ```
 
-You will need to set `$RVT_SHP_ARCHIVE_DIR` (destination dir), `$RVT_SHP_DIR` (source dir, see above) and `$RVT_TEMP_DIR` (usually /tmp) environment variables.
-
 4. Split shapefiles up to zoom level 11 and pack them into .tar.gz for further usage:
 ```sh
 rsgeotools-process-mass-subdiv-shapefile.sh 0 0 0 7 ocean
 ```
+
+You will need to set `$RVT_SHP_ARCHIVE_DIR` (destination dir), `$RVT_SHP_DIR` (source dir, see above) and `$RVT_TEMP_DIR` (usually /tmp) environment variables.
+
 
 
