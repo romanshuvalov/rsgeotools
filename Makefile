@@ -31,5 +31,8 @@ rsgeotools-conv: before_rsgeotools
 rsgeotools-csv2rvtdata: before_rsgeotools  
 	$(CXX) $(CFLAGS) $(INC) -I$(SRC_DIR)/csv2rvtdata/ -lgeos_c $(SRC_DIR)/csv2rvtdata/csv.c $(SRC_DIR)/csv2rvtdata/csv2rvtdata.cpp -o $(OUTPUT_BIN_DIR)/rsgeotools-csv2rvtdata
 
+rsgeotools-tiffcompose: before_rsgeotools  
+	$(CXX) $(CFLAGS) $(INC) $(SRC_DIR)/tiffcompose/tiffcompose.cpp -ltiff -o $(OUTPUT_BIN_DIR)/rsgeotools-tiffcompose
+
 .PHONY: before_rsgeotools clean_rsgeotools
 
