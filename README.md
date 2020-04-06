@@ -10,12 +10,18 @@ This repository is currently under development. Please come back later.
 * libtiff-dev and geotiff-bin, for processing TIFF images
 * osmctools (osmconvert and osmfilter) for initial processing OSM planet
 
+## Compile
+
+Just run `make`. 
+
 # Usage
+
+Warning: compiled binaries (`bin` directory) and scripts (`scripts` directory) must be in PATH environment variable. 
 
 ## 1. Prepare OSM Planet
 
 1. Download OSM Planet from https://planet.openstreetmap.org/ (PBF). 
-2. Run `RVT_O5M_DIR=<o5m dir> planet-init.sh <planet-******.osm.pbf>`
+2. Run `RVT_O5M_DIR=<o5m dir> rsgeotools-planet-init.sh <planet-******.osm.pbf>`
 
 Planet will be subdivided to zoom 7 tiles and saved to `$RVT_O5M_DIR` in o5m format.
 
@@ -28,26 +34,13 @@ In OpenStreetMap, large water areas are not stored as polygons, instead, `natura
 3. Split shapefiles up to zoom level 7:
 ```sh
 cd $RVT_SHP_DIR
-
 rsgeotools-subdiv-shapefile.sh 0 0 0 1 ocean
-
-rsgeotools-subdiv-shapefile.sh 0 0 0 2 ocean
-rm ocean1*
-
-rsgeotools-subdiv-shapefile.sh 0 0 0 3 ocean
-rm ocean2*
-
-rsgeotools-subdiv-shapefile.sh 0 0 0 4 ocean
-rm ocean3*
-
-rsgeotools-subdiv-shapefile.sh 0 0 0 5 ocean
-rm ocean4*
-
-rsgeotools-subdiv-shapefile.sh 0 0 0 6 ocean
-rm ocean5*
-
-rsgeotools-subdiv-shapefile.sh 0 0 0 7 ocean
-rm ocean6*
+rsgeotools-subdiv-shapefile.sh 0 0 0 2 ocean && rm ocean1*
+rsgeotools-subdiv-shapefile.sh 0 0 0 3 ocean && rm ocean2*
+rsgeotools-subdiv-shapefile.sh 0 0 0 4 ocean && rm ocean3*
+rsgeotools-subdiv-shapefile.sh 0 0 0 5 ocean && rm ocean4*
+rsgeotools-subdiv-shapefile.sh 0 0 0 6 ocean && rm ocean5*
+rsgeotools-subdiv-shapefile.sh 0 0 0 7 ocean && rm ocean6*
 ```
 
 4. Split shapefiles up to zoom level 11 and pack them into .tar.gz for further usage:
