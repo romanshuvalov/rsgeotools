@@ -56,4 +56,9 @@ You will need to set `$RVT_SHP_ARCHIVE_DIR` (destination dir), `$RVT_SHP_DIR` (s
 
 Run `rsgeotools-planet-process-full.sh 200331 0`. First argument is a timestamp (*YYMMDD* is recommended). Process can take up to 2-3 weeks depending on your PC performance. In case you need to pause and resume the processing process, use second argument (0-11) to continue from certain stage. Current stage is always written in `$RVT_GPAK_DIR/planet_process_log_file.txt`. 
 
+Additional environment variables required:
+* `RVT_GPAK_DIR` -- output directory
+* `RVT_CSV_CONF` -- must be pointed to `conf/osm-conf.ini` file
+
+
 
