@@ -52,5 +52,8 @@ rsgeotools-process-mass-subdiv-shapefile.sh 0 0 0 7 ocean
 
 You will need to set `$RVT_SHP_ARCHIVE_DIR` (destination dir), `$RVT_SHP_DIR` (source dir, see above) and `$RVT_TEMP_DIR` (usually /tmp) environment variables.
 
+## 3. Process everything
+
+Run `rsgeotools-planet-process-full.sh 200331 0`. First argument is a timestamp (*YYMMDD* is recommended). Process can take up to 2-3 weeks depending on your PC performance. In case you need to pause and resume the processing process, use second argument (0-11) to continue from certain stage. Current stage is always written in `$RVT_GPAK_DIR/planet_process_log_file.txt`. 
 
 
