@@ -20,6 +20,8 @@ Just run `make`.
 
 Warning: compiled binaries (`bin` directory) and scripts (`scripts` directory) must be in PATH environment variable. 
 
+Warning: all paths in environment variables must be absolute. 
+
 ## 1. Prepare OSM Planet
 
 1. Download OSM Planet from https://planet.openstreetmap.org/ (PBF). 
@@ -52,13 +54,29 @@ rsgeotools-process-mass-subdiv-shapefile.sh 0 0 0 7 ocean
 
 You will need to set `$RVT_SHP_ARCHIVE_DIR` (destination dir), `$RVT_SHP_DIR` (source dir, see above) and `$RVT_TEMP_DIR` (usually /tmp) environment variables.
 
-## 3. Process everything
+## 3. Process geodata
 
 Run `rsgeotools-planet-process-full.sh 200331 0`. First argument is a timestamp (*YYMMDD* is recommended). Process can take up to 2-3 weeks depending on your PC performance. In case you need to pause and resume the processing process, use second argument (0-11) to continue from certain stage. Current stage is always written in `$RVT_GPAK_DIR/planet_process_log_file.txt`. 
 
 Additional environment variables required:
-* `RVT_GPAK_DIR` -- output directory
-* `RVT_CSV_CONF` -- must be pointed to `conf/osm-conf.ini` file
+* `RVT_GPAK_DIR` -- output directory;
+* `RVT_CSV_CONF` -- must be pointed to `conf/osm-conf.ini` file. 
 
+## 4. Process heightmap data
+
+Relief is based on these two sources:
+* NASADEM, see https://lpdaac.usgs.gov/products/nasadem_hgtv001/
+* ASTER GDEM Version 3, see https://ssl.jspacesystems.or.jp/ersdac/GDEM/E/
+
+Both sources have no restrictions on reuse, sale, or redistribution (see https://lpdaac.usgs.gov/data/data-citation-and-policies/). 
+
+Because NASADEM images is less noisy, this dataset has been selected as primary source. ASTER GDEM Version 3 is used if no data available in NASADEM dataset. You need to download both datasets before processing. 
+
+To start processing, run `rsgeotools-process-hm-full.sh`. 
+
+You will need to set following environment variables:
+* `RVT_GPAK_DIR` -- output directory for heightmap gpaks, it is recommended to make it different from geodata gpaks which was created above;
+* `RVT_HGT_DIR_NASADEM` -- directory containing set of ZIP files of NASADEM;
+* `RVT_HGT_DIR_ASTERGDEMV3` -- directory containing set of ZIP files of ASTER GDEM V3. 
 
 
