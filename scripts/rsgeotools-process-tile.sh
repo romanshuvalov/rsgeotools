@@ -136,7 +136,7 @@ done
 
 echo "geotilepacker g $TOP_Z $TOP_X $TOP_Y $DEST_Z..."
 
-geotilepacker_cmd="geotilepacker g $TOP_Z $TOP_X $TOP_Y $SUBPAK_Z $DEST_Z 256 $PLANET_TIMESTAMP"
+geotilepacker_cmd="rsgeotools-tilepacker g $TOP_Z $TOP_X $TOP_Y $SUBPAK_Z $DEST_Z 256 $PLANET_TIMESTAMP"
 echo "Executing: $geotilepacker_cmd"
 eval $geotilepacker_cmd
 

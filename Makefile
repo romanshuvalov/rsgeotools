@@ -23,7 +23,7 @@ clean:
 before_rsgeotools: 
 	test -d bin || mkdir -p bin
 
-rsgeotools: before_rsgeotools rsgeotools-conv rsgeotools-csv2rvtdata rsgeotools-tiffcompose rsgeotools-o5m-get-outlines rsgeotools-tilepacker
+rsgeotools: before_rsgeotools rsgeotools-conv rsgeotools-csv2rvtdata rsgeotools-tiffcompose rsgeotools-tiff2hmdata rsgeotools-o5m-get-outlines rsgeotools-tilepacker
 
 rsgeotools-conv: before_rsgeotools  
 	$(CXX) $(CFLAGS) $(INC) $(SRC_DIR)/conv/conv.cpp -o $(OUTPUT_BIN_DIR)/rsgeotools-conv
@@ -33,6 +33,9 @@ rsgeotools-csv2rvtdata: before_rsgeotools
 
 rsgeotools-tiffcompose: before_rsgeotools  
 	$(CXX) $(CFLAGS) $(INC) $(SRC_DIR)/tiffcompose/tiffcompose.cpp -ltiff -o $(OUTPUT_BIN_DIR)/rsgeotools-tiffcompose
+
+rsgeotools-tiff2hmdata: before_rsgeotools  
+	$(CXX) $(CFLAGS) $(INC) $(SRC_DIR)/tiff2hmdata/tiff2hmdata.cpp -ltiff -o $(OUTPUT_BIN_DIR)/rsgeotools-tiff2hmdata
 	
 rsgeotools-o5m-get-outlines: before_rsgeotools  
 	$(CC) $(CFLAGS) $(INC) $(SRC_DIR)/o5m_get_outlines/o5m_get_outlines.c -o $(OUTPUT_BIN_DIR)/rsgeotools-o5m-get-outlines

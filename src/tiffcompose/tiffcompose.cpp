@@ -45,18 +45,6 @@ char *filename;
 char *out_filename;
 
 
-typedef struct hm_file_header_t {
-    uint32_t magic_num;
-    uint32_t flags;
-    uint32_t image_size;
-    uint32_t reserved;
-
-    uint32_t reserved0;
-    uint32_t reserved1;
-    uint32_t reserved2;
-    uint32_t reserved3;
-} hm_file_header_t;
-
 void DummyHandler(const char* module, const char* fmt, va_list ap)
 {
     // ignore errors and warnings (or handle them your own way)
@@ -110,10 +98,8 @@ int main(int argc, char* argv[]) {
     TIFF *tiff_out = TIFFOpen(fn_tiff_out, "rb+");
 
 
-    // #define uint32 unsigned long
 
     uint32_t width = 0, height = 0, bits_per_sample = 0, samples_per_pixel = 0, sample_format = 0;
-//    uint32_t t[6];
 
 
 
@@ -127,7 +113,6 @@ int main(int argc, char* argv[]) {
 
 
     printf("%s: (%d x %d, %d bit) (samples per pixel: %d, format: %d) \n", fn_tiff1, width, height, bits_per_sample, samples_per_pixel, sample_format);
-    //printf("sample format: %d, samples per pixel: %d\n", sample_format, samples_per_pixel);
 
     if ( (bits_per_sample != 16) || (sample_format != 2) || (samples_per_pixel != 1) ) {
         fprintf(stderr, "ERROR: Bad format. Aborted. \n\n");
@@ -183,40 +168,6 @@ int main(int argc, char* argv[]) {
     printf("%s: (%d x %d, %d bit) (samples per pixel: %d, format: %d) \n", fn_tiff_mask, width_mask, height_mask, bits_per_sample_mask, samples_per_pixel_mask, sample_format_mask);
 
 
-//    if (
-//        (width != width2)
-//        || (height != height2)
-//        || (bits_per_sample != bits_per_sample2)
-//        || (samples_per_pixel != samples_per_pixel2)
-//        || (sample_format != sample_format2)
-//
-//        ) {
-//
-//        fprintf(stderr, "ERROR: Format of %s is different from %s. Aborted. \n", fn_tiff2, fn_tiff1 );
-//
-//        TIFFClose(tiff1);
-//        TIFFClose(tiff2);
-//        TIFFClose(tiff_mask);
-//        TIFFClose(tiff_out);
-//
-//        exit(-1);
-//
-//    };
-
-
-
-
-
-////    TIFFSetField(tiff_out, TIFFTAG_IMAGEWIDTH, width);
-////    TIFFSetField(tiff_out, TIFFTAG_IMAGELENGTH, height);
-////    TIFFSetField(tiff_out, TIFFTAG_BITSPERSAMPLE, bits_per_sample);
-////    TIFFSetField(tiff_out, TIFFTAG_SAMPLESPERPIXEL, samples_per_pixel);
-////    TIFFSetField(tiff_out, TIFFTAG_SAMPLEFORMAT, sample_format);
-
-
-
-
-
 
     int16_t *buf1, *buf2;
     uint8_t *buf_mask;
@@ -250,18 +201,11 @@ int main(int argc, char* argv[]) {
 
             buf1[i] = (int16_t) ( (1.0-k)*buf1[i] + k*buf2[i] );
 
-
-//            buf1[i] = buf_mask[i];
-
-
-
         };
 
 
         TIFFWriteScanline(tiff_out, buf1, row);
 
-
-        //printf("\n");
     };
 
     _TIFFfree(buf1);
@@ -276,7 +220,6 @@ int main(int argc, char* argv[]) {
     TIFFClose(tiff_out);
 
 
-//    fclose(fp);
 
     printf("Done.\n");
 

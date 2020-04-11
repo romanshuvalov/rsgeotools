@@ -132,7 +132,7 @@ int main(int argc, char ** argv) {
     };
 
     if ( (argc < 5) || ( strchr("cphfiIDot", op) == NULL ) ) {
-        fprintf( stderr, "Usage: geoconv <OP> z_scale tile_x tile_y [dest_z/heightmap_image_size] \n");
+        fprintf( stderr, "Usage: geoconv <OP> z_scale tile_x tile_y [dest_z/heightmap_image_size [hgt_prefix hgt_suffix]] \n");
         fprintf( stderr, "   or: geoconv <OP> lat lon dest_z side_tiles \n");
         fprintf( stderr, "Ops: \n");
         fprintf( stderr, "  c - print BB coordinates in 3857 projection to stdout\n");
@@ -142,7 +142,7 @@ int main(int argc, char ** argv) {
         fprintf( stderr, "  i - print all tiles for scale <dest_z> located inside given tile \n");
         fprintf( stderr, "  I - same, but exclude lower 1/4 of world map (Antarctica) \n");
         fprintf( stderr, "  o - print tile for scale <dest_z> contains given tile \n");
-        fprintf( stderr, "  h - create heightmap using GDAL utils (gdalwarp) and ASTER GDEM v3 data\n");
+        fprintf( stderr, "  h - create heightmap using GDAL utils (gdalwarp)\n");
         fprintf( stderr, "  t - print list of NxN tiles around point defined by lat/lon " );
         fprintf( stderr, "\n");
         return -1;
