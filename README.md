@@ -121,6 +121,7 @@ Run `rsgeotools-rvtgen3d` to generate 3D world.
     * --drop-no-outer-ring - ignore broken multipolygons which have no outer ring.
     
 Following layers will be generated:
+
 0. Surface geometry
 1. Buildings
 2. Surface map (area)
@@ -130,7 +131,17 @@ Following layers will be generated:
 6. Wires
 7. Stripes
 8. Walls
-  
+
+Buildings layer has `FlagsA` and `FlagsB` vertex attributes.
+
+* `FlagsA` contains building texture type: residential (1), commercial (2) or industrial (4).
+* `FlagsB` contains surface type flags: roof (1), flat wall without windows (4).
+
+In .ply, `FlagsA` is stored in color alpha component, `FlagsB` is stored in 4th component of normal (nw). 
+
+In .obj, vertex has following format: `PosX, PosY, PosZ, ColorR, ColorG, ColorB, FlagsA, FlagsB`. 
+
+
 ```diff
 ! Under development. 
 ```
