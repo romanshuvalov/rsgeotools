@@ -102,6 +102,22 @@ You will need to set following environment variables:
 
 # Usage (3D world model generation)
 
+Run `rsgeotools-rvtgen3d` to generate 3D world.
+*  Required parameters:
+  * --x=<top>, --y=<left>, --w=<width>, --h=<height> - rectangle in tile coordinates at 14th scale. You can use `rsgeotools-conv` to get tile coordinate from lat/lon pair, or use third-party tools like [Geofabrik's Tile Calculator](https://tools.geofabrik.de/calc/#&grid=1);
+  * --cache-dir=<path> - path to `RVT_GPAK_DIR`, without tailing slash.
+*  Optional parameters:
+  * --output-dir=<path> - path to output directory;
+  * --data-dir=<path> - path to `rvtgen3d-data`;
+  * --disable-timestamp-folders - by default, separated output folder with unique name will be created. This option disables this feature;
+  * --flat-terrain - disable relief;
+  * --z-up - define Z axis as vertical. Default is Y;
+  * --merge - merge all tiles into one file. Not recommended for large areas;
+  * --disable-edge-smoothing;
+  * --obj - set output format to .obj instead of .ply;
+  * --disable-decorations - disable building decorations;
+  * --drop-no-outer-ring - ignore broken multipolygons which have no outer ring.
+  
 ```diff
 ! Under development. 
 ```
