@@ -1,9 +1,28 @@
-# rsgeotools
-Toolset related to OpenStreetMap 3D renderer and/or vector tiles
+# rsgeotools & rvtgen3d
 
 ```diff
 ! This repository is currently under development. Please come back later. 
 ```
+
+OpenStreetMap-based 3D world generator.
+
+![Screenshot](https://streets.romanshuvalov.com/screenshots/github/rvtgen3d-park1.jpg)
+
+Features:
+* 3D buildings with roof decorations and entrances
+* Roof shapes (only dome, onion and cone/pyramid are supported)
+* Randomly generated rural houses
+* Terrain surface map
+* Road marking
+* Trees and bushes
+* Street lighting on roads and pavements
+* Rail roads
+* Power tower and power lines (limited support)
+* Walls and fences
+* Apocalypse-styled destroyed bridges
+* Relief, based on other sources, see below
+
+![Screenshot](https://streets.romanshuvalov.com/screenshots/github/rvtgen3d-zh1.jpg)
 
 ## Dependencies
 
@@ -11,12 +30,14 @@ Toolset related to OpenStreetMap 3D renderer and/or vector tiles
 * gdal, MIT/X style license, for processing heightmaps with rsgeotools-conv and for processing geodata
 * libtiff-dev and geotiff-bin, for processing TIFF images
 * osmctools (osmconvert and osmfilter) for initial processing OSM planet
+* boost library
+* zlib, bzip2 and pthread libraries
 
 ## Compile
 
 Just run `make`. 
 
-# Usage
+# Usage (preparation of vector tiles)
 
 Warning: compiled binaries (`bin` directory) and scripts (`scripts` directory) must be in PATH environment variable. 
 
@@ -79,4 +100,8 @@ You will need to set following environment variables:
 * `RVT_HGT_DIR_NASADEM` -- directory containing set of ZIP files of NASADEM;
 * `RVT_HGT_DIR_ASTERGDEMV3` -- directory containing set of ZIP files of ASTER GDEM V3. 
 
+# Usage (3D world model generation)
 
+```diff
+! Under development. 
+```
