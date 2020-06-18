@@ -1,6 +1,6 @@
 # rsgeotools & rvtgen3d
 
-OpenStreetMap-based 3D world generator from Generation Streets. 
+OpenStreetMap-based 3D world generator. Originally it was part of Generation Streets, OSM-based video game. Now it is released as a separated command-line tool named **rvtgen3d** and distributed under free license as part of **rsgeotools** toolset.
 
 ![Screenshot](https://streets.romanshuvalov.com/screenshots/github/rvtgen3d-park1.jpg)
 
