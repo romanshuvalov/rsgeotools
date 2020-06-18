@@ -20,7 +20,7 @@ Features:
 
 Please note that this toolset only can generate 3D models, no visual renderer provided. Also, it's designed for mass processing and may not be convenient for single use. 
 
-If you only want to see certain terrirory rendered in 3D, check out `Generation Streets`:
+If you only want to see certain territory rendered in 3D, check out `Generation Streets`:
 
 * **[Get Generation Streets on Steam](https://store.steampowered.com/app/887970/Generation_Streets/)**. It's free, but you may want to unlock access to global coverage for ~$5. 
 
