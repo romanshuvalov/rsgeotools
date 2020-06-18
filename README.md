@@ -1,9 +1,5 @@
 # rsgeotools & rvtgen3d
 
-```diff
-! This repository is currently under development. Please come back later. 
-```
-
 OpenStreetMap-based 3D world generator from Generation Streets. 
 
 ![Screenshot](https://streets.romanshuvalov.com/screenshots/github/rvtgen3d-park1.jpg)
@@ -22,15 +18,15 @@ Features:
 * Apocalypse-styled destroyed bridges
 * Relief, based on other sources, see below
 
-![Screenshot](https://streets.romanshuvalov.com/screenshots/github/rvtgen3d-zh1.jpg)
-
 Please note that this toolset only can generate 3D models, no visual renderer provided. Also, it's designed for mass processing and may not be convenient for single use. 
 
 If you only want to see certain terrirory rendered in 3D, check out `Generation Streets`:
 
-* ![**Get Generation Streets on Steam**](https://store.steampowered.com/app/887970/Generation_Streets/). It's free, but you may want to unlock access to global coverage for ~$5. 
+* **![Get Generation Streets on Steam](https://store.steampowered.com/app/887970/Generation_Streets/)**. It's free, but you may want to unlock access to global coverage for ~$5. 
 
 To build your own command-line toolset, read instructions below. 
+
+![Screenshot](https://streets.romanshuvalov.com/screenshots/github/rvtgen3d-zh1.jpg)
 
 ## Dependencies
 
@@ -55,8 +51,8 @@ Warning: all paths in environment variables must be absolute.
 
 ## 1. Prepare OSM Planet
 
-1. Download OSM Planet from https://planet.openstreetmap.org/ (PBF). 
-2. Run `RVT_O5M_DIR=<o5m dir> rsgeotools-planet-init.sh <planet-******.osm.pbf>`
+1. Download OSM Planet from https://planet.openstreetmap.org/ in PBF format.
+2. Run `RVT_O5M_DIR=<o5m dir> rsgeotools-planet-init.sh <planet-******.osm.pbf>`.
 
 Planet will be subdivided to zoom 7 tiles and saved to `$RVT_O5M_DIR` in o5m format.
 
