@@ -4,7 +4,7 @@
 ! This repository is currently under development. Please come back later. 
 ```
 
-OpenStreetMap-based 3D world generator.
+OpenStreetMap-based 3D world generator from Generation Streets. 
 
 ![Screenshot](https://streets.romanshuvalov.com/screenshots/github/rvtgen3d-park1.jpg)
 
@@ -24,6 +24,14 @@ Features:
 
 ![Screenshot](https://streets.romanshuvalov.com/screenshots/github/rvtgen3d-zh1.jpg)
 
+Please note that this toolset only can generate 3D models, no visual renderer provided. Also, it's designed for mass processing and may not be convenient for single use. 
+
+If you only want to see certain terrirory rendered in 3D, check out `Generation Streets`:
+
+* ![**Get Generation Streets on Steam**](https://store.steampowered.com/app/887970/Generation_Streets/). It's free, but you may want to unlock access to global coverage for ~$5. 
+
+To build your own command-line toolset, read instructions below. 
+
 ## Dependencies
 
 * libgeos_c, LGPL-licensed, for rsgeotools-csv2rvtdata
@@ -32,6 +40,8 @@ Features:
 * osmctools (osmconvert and osmfilter) for initial processing OSM planet
 * boost library
 * zlib, bzip2 and pthread libraries
+
+This toolset is designed to work on Linux. 
 
 ## Compile
 
@@ -104,6 +114,8 @@ You will need to set following environment variables:
 
 # Usage (3D world model generation)
 
+## rvtgen3d 
+
 Run `rsgeotools-rvtgen3d` to generate 3D world.
 *  Required parameters:
     * --x=<top>, --y=<left>, --w=<width>, --h=<height> - rectangle in tile coordinates at 14th scale. You can use `rsgeotools-conv` to get tile coordinate from lat/lon pair, or use third-party tools like [Geofabrik's Tile Calculator](https://tools.geofabrik.de/calc/#&grid=1);
@@ -132,14 +144,27 @@ Following layers will be generated:
 7. Stripes
 8. Walls
 
+## Vertex attributes description
+
 Buildings layer has `FlagsA` and `FlagsB` vertex attributes.
 
-* `FlagsA` contains building texture type: residential (1), commercial (2) or industrial (4).
-* `FlagsB` contains surface type flags: roof (1), flat wall without windows (4).
+* Attribute `FlagsA` contains building texture type: residential (1), commercial (2) or industrial (4).
+* Attribute `FlagsB` contains surface type flags: roof (1), flat wall without windows (4).
 
 In .ply, `FlagsA` is stored in color alpha component, `FlagsB` is stored in 4th component of normal (nw). 
 
 In .obj, vertex has following format: `PosX, PosY, PosZ, ColorR, ColorG, ColorB, FlagsA, FlagsB`. 
+
+Surface map layer is coded with following colors:
+
+| Surface | RGB vertex color |
+| --- | --- |
+| Water | (0.0, 1.0, 0.0) |
+| Asphalt | (0.2, 0.0, 0.0) |
+| Ground (default) | (0.5, 0.0, 0.0) |
+| Grass | (0.7, 0.0, 0.0) |
+| Sand | (0.0, 0.0, 0.2) |
+| Quarry (rock) | (0.0, 0.0, 0.7) |
 
 
 ```diff
