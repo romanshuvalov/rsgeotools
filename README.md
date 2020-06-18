@@ -162,7 +162,8 @@ Surface map layer is coded with following colors:
 | Sand | (0.0, 0.0, 0.2) |
 | Quarry (rock) | (0.0, 0.0, 0.7) |
 
+# License
 
-```diff
-! Under development. 
-```
+Most of the code is distributed under 3-clause BSD license, see `LICENSE`. 
+
+Note that toolset also contains code based on third-party projects licensed under different licenses, in that cases license provided in source code.
