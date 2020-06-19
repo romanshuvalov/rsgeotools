@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.7)
+project(rsgeotools)
+
+add_subdirectory(src/conv)
+add_subdirectory(src/csv2rvtdata)
+add_subdirectory(src/o5m_get_outlines)
+add_subdirectory(src/rvtgen3d)
+add_subdirectory(src/tiff2hmdata)
+add_subdirectory(src/tiffcompose)
+add_subdirectory(src/tilepacker)
