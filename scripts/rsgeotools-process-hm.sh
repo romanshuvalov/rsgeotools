@@ -117,7 +117,7 @@ HGT_DIR="$TEMP_DIR"
 
 
 
-for f in `rsgeotools-conv f 7 81 41`
+for f in `rsgeotools-conv f ${TILE_Z} ${TILE_X} ${TILE_Y}`
 do
 	
 	f1="$f"
