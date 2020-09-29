@@ -118,10 +118,10 @@ do
 
 #	echo "geocsv2db (b, a, l, p) $PROCESS_Z $TP $DEST_Z..."
 
-	geocsv2db b $PROCESS_Z $TP $DEST_Z ${CSV_DIR}/multipolygons.csv ${FILENAME}_outlines.txt
-	geocsv2db a $PROCESS_Z $TP $DEST_Z ${CSV_DIR}/multipolygons.csv $OCEAN_PARAM
-	geocsv2db l $PROCESS_Z $TP $DEST_Z ${CSV_DIR}/lines.csv 
-	geocsv2db p $PROCESS_Z $TP $DEST_Z ${CSV_DIR}/points.csv 
+	rsgeotools-csv2rvtdata b $PROCESS_Z $TP $DEST_Z ${CSV_DIR}/multipolygons.csv ${FILENAME}_outlines.txt
+	rsgeotools-csv2rvtdata a $PROCESS_Z $TP $DEST_Z ${CSV_DIR}/multipolygons.csv $OCEAN_PARAM
+	rsgeotools-csv2rvtdata l $PROCESS_Z $TP $DEST_Z ${CSV_DIR}/lines.csv 
+	rsgeotools-csv2rvtdata p $PROCESS_Z $TP $DEST_Z ${CSV_DIR}/points.csv 
 
 	rm ${FILENAME}.pbf
 	
